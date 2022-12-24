@@ -4,13 +4,26 @@ import datetime
 
 
 # Replace these values with your own Twitter API keys and tokens
-consumer_key = "xxxxxx"
-consumer_secret = "xxxxxx"
-access_token = "xxxxxx"
-access_token_secret = "xxxxxx"
+consumer_key = "NnPL65juj8nstnd6x5t4tECun"
+consumer_secret = "i0yD4lmam6mBDqTaLlCOSQ5DdP38yj8yeqZ2ezNy3GRHYw4Zku"
+access_token = "1600087262909317120-WaeIU8aBbV0QkyML1U3xtzZP1NHeAO"
+access_token_secret = "uNdcHPWMzR8uruFHoXEFKylue5VmOExki4PZn3omw9x3U"
+
+
+user = "twitter-bot-challenge-user"
+password = "1Dci5pk0UHGBUzpN"
+cluster_address = "loadtests.mjmdg.mongodb.net"
 
 # Replace this value with the connection string for your own MongoDB database
-mongodb_uri = "mongodb://localhost:27017/"
+mongodb_uri = (
+    "mongodb+srv://"
+    + user
+    + ":"
+    + password
+    + "@"
+    + cluster_address
+    + "/test?retryWrites=true&w=majority"
+)
 
 
 def post_tweet():
@@ -98,3 +111,8 @@ def get_pair_to_post(ohlcv_db, posts_db):
     market_values = ohlcv_db.find({"pair": pair_to_post["pair"]})
 
     return pair_to_post, market_values
+
+
+
+if __name__ == "__main__":
+    post_tweet()
